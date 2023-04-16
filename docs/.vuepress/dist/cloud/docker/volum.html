@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>6、Docker 数据卷的管理 | TechTalks</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    <link rel="icon" href="/image/ico.png">
+    <meta name="description" content="TechTalks：提高你的编程技能和思维方式的计算机技术博客">
+    <meta name="baidu-site-verification" content="codeva-ykKwcuuoe9">
+    
+    <link rel="preload" href="/assets/css/0.styles.e8e4f3a3.css" as="style"><link rel="preload" href="/assets/js/app.1128b3fd.js" as="script"><link rel="preload" href="/assets/js/2.f44a4f26.js" as="script"><link rel="preload" href="/assets/js/20.84be50a4.js" as="script"><link rel="prefetch" href="/assets/js/10.d40f0961.js"><link rel="prefetch" href="/assets/js/11.82d51190.js"><link rel="prefetch" href="/assets/js/12.eb5ed550.js"><link rel="prefetch" href="/assets/js/13.5341e0c0.js"><link rel="prefetch" href="/assets/js/14.f1c21ae1.js"><link rel="prefetch" href="/assets/js/15.e0dbb05f.js"><link rel="prefetch" href="/assets/js/16.9c02a03b.js"><link rel="prefetch" href="/assets/js/17.b4900299.js"><link rel="prefetch" href="/assets/js/18.b5a5c967.js"><link rel="prefetch" href="/assets/js/19.060d3d58.js"><link rel="prefetch" href="/assets/js/21.78e79cad.js"><link rel="prefetch" href="/assets/js/22.99f0c776.js"><link rel="prefetch" href="/assets/js/23.7f559c7d.js"><link rel="prefetch" href="/assets/js/24.759459e9.js"><link rel="prefetch" href="/assets/js/25.17c42094.js"><link rel="prefetch" href="/assets/js/26.cbd20723.js"><link rel="prefetch" href="/assets/js/27.45bba073.js"><link rel="prefetch" href="/assets/js/28.0faee539.js"><link rel="prefetch" href="/assets/js/29.aa8d0c80.js"><link rel="prefetch" href="/assets/js/3.4eac91db.js"><link rel="prefetch" href="/assets/js/30.227b33e4.js"><link rel="prefetch" href="/assets/js/31.37d05d28.js"><link rel="prefetch" href="/assets/js/32.50c3b7fa.js"><link rel="prefetch" href="/assets/js/33.b3662790.js"><link rel="prefetch" href="/assets/js/34.5839cbd6.js"><link rel="prefetch" href="/assets/js/35.74066ea7.js"><link rel="prefetch" href="/assets/js/36.5daa0a8a.js"><link rel="prefetch" href="/assets/js/37.6eab3cd4.js"><link rel="prefetch" href="/assets/js/38.c248805a.js"><link rel="prefetch" href="/assets/js/39.a4dea061.js"><link rel="prefetch" href="/assets/js/4.7ac2b204.js"><link rel="prefetch" href="/assets/js/40.20175a96.js"><link rel="prefetch" href="/assets/js/41.bac5e367.js"><link rel="prefetch" href="/assets/js/42.9f7d59b3.js"><link rel="prefetch" href="/assets/js/5.f702624b.js"><link rel="prefetch" href="/assets/js/6.c76c0e1e.js"><link rel="prefetch" href="/assets/js/7.44092a21.js"><link rel="prefetch" href="/assets/js/8.f9be6854.js"><link rel="prefetch" href="/assets/js/9.080a6f04.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e8e4f3a3.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="https://i.ibb.co/Dwq0gdg/ico.png" alt="TechTalks" class="logo"> <span class="site-name can-hide">TechTalks</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="云原生" class="dropdown-title"><span class="title">云原生</span> <span class="arrow down"></span></button> <button type="button" aria-label="云原生" class="mobile-dropdown-title"><span class="title">云原生</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cloud/blog/" class="nav-link">
+  优秀博文
+</a></li><li class="dropdown-item"><!----> <a href="/cloud/docker/" class="nav-link router-link-active">
+  docker
+</a></li><li class="dropdown-item"><!----> <a href="/cloud/kubernetes/" class="nav-link">
+  Kubernetes
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="常用工具" class="dropdown-title"><span class="title">常用工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="常用工具" class="mobile-dropdown-title"><span class="title">常用工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/usual_tech/go/" class="nav-link">
+  Go
+</a></li><li class="dropdown-item"><!----> <a href="/usual_tech/git/" class="nav-link">
+  Git
+</a></li></ul></div></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  快意门
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="八股文" class="dropdown-title"><span class="title">八股文</span> <span class="arrow down"></span></button> <button type="button" aria-label="八股文" class="mobile-dropdown-title"><span class="title">八股文</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cs/network/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-item"><!----> <a href="/cs/1/" class="nav-link">
+  软件工程
+</a></li><li class="dropdown-item"><!----> <a href="/cs/2/" class="nav-link">
+  组成原理
+</a></li><li class="dropdown-item"><!----> <a href="/cs/browser/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/cs/database/" class="nav-link">
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/cloud/docker/cs/os/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-item"><!----> <a href="/cloud/docker/cs/redis/" class="nav-link">
+  Redis
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="云原生" class="dropdown-title"><span class="title">云原生</span> <span class="arrow down"></span></button> <button type="button" aria-label="云原生" class="mobile-dropdown-title"><span class="title">云原生</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cloud/blog/" class="nav-link">
+  优秀博文
+</a></li><li class="dropdown-item"><!----> <a href="/cloud/docker/" class="nav-link router-link-active">
+  docker
+</a></li><li class="dropdown-item"><!----> <a href="/cloud/kubernetes/" class="nav-link">
+  Kubernetes
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="常用工具" class="dropdown-title"><span class="title">常用工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="常用工具" class="mobile-dropdown-title"><span class="title">常用工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/usual_tech/go/" class="nav-link">
+  Go
+</a></li><li class="dropdown-item"><!----> <a href="/usual_tech/git/" class="nav-link">
+  Git
+</a></li></ul></div></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  快意门
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="八股文" class="dropdown-title"><span class="title">八股文</span> <span class="arrow down"></span></button> <button type="button" aria-label="八股文" class="mobile-dropdown-title"><span class="title">八股文</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cs/network/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-item"><!----> <a href="/cs/1/" class="nav-link">
+  软件工程
+</a></li><li class="dropdown-item"><!----> <a href="/cs/2/" class="nav-link">
+  组成原理
+</a></li><li class="dropdown-item"><!----> <a href="/cs/browser/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/cs/database/" class="nav-link">
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/cloud/docker/cs/os/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-item"><!----> <a href="/cloud/docker/cs/redis/" class="nav-link">
+  Redis
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>一、Docker入门</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/cloud/docker/" aria-current="page" class="sidebar-link">1、 容器简介</a></li><li><a href="/cloud/docker/what_is_docker.html" class="sidebar-link">2、什么是 Docker？</a></li><li><a href="/cloud/docker/install_docker.html" class="sidebar-link">3、 安装Docker</a></li><li><a href="/cloud/docker/operate.html" class="sidebar-link">4 docker镜像相关操作</a></li><li><a href="/cloud/docker/manage.html" class="sidebar-link">5、 容器的日常管理</a></li><li><a href="/cloud/docker/volum.html" aria-current="page" class="active sidebar-link">6、Docker 数据卷的管理</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/cloud/docker/volum.html#_6-1-挂载时创建卷" class="sidebar-link">6.1 挂载时创建卷</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/cloud/docker/volum.html#挂载卷" class="sidebar-link">挂载卷</a></li><li class="sidebar-sub-header"><a href="/cloud/docker/volum.html#设置共享卷-使用同一个卷启动一个新的容器" class="sidebar-link">设置共享卷，使用同一个卷启动一个新的容器</a></li><li class="sidebar-sub-header"><a href="/cloud/docker/volum.html#查看卷列表" class="sidebar-link">查看卷列表</a></li></ul></li><li class="sidebar-sub-header"><a href="/cloud/docker/volum.html#_6-2-创建卷后挂载" class="sidebar-link">6.2 创建卷后挂载</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/cloud/docker/volum.html#创建一个卷" class="sidebar-link">创建一个卷</a></li><li class="sidebar-sub-header"><a href="/cloud/docker/volum.html#指定卷名" class="sidebar-link">指定卷名</a></li><li class="sidebar-sub-header"><a href="/cloud/docker/volum.html#查看卷路径" class="sidebar-link">查看卷路径</a></li><li class="sidebar-sub-header"><a href="/cloud/docker/volum.html#使用卷创建" class="sidebar-link">使用卷创建</a></li><li class="sidebar-sub-header"><a href="/cloud/docker/volum.html#设置卷" class="sidebar-link">设置卷</a></li><li class="sidebar-sub-header"><a href="/cloud/docker/volum.html#查看使用的端口" class="sidebar-link">查看使用的端口</a></li></ul></li><li class="sidebar-sub-header"><a href="/cloud/docker/volum.html#_6-3-手动将容器保存为镜像" class="sidebar-link">6.3 手动将容器保存为镜像</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/cloud/docker/volum.html#将容器提交为镜像" class="sidebar-link">将容器提交为镜像</a></li><li class="sidebar-sub-header"><a href="/cloud/docker/volum.html#使用新的镜像启动容器" class="sidebar-link">使用新的镜像启动容器</a></li><li class="sidebar-sub-header"><a href="/cloud/docker/volum.html#在容器安装httpd服务" class="sidebar-link">在容器安装httpd服务</a></li></ul></li></ul></li><li><a href="/cloud/docker/dockerfile.html" class="sidebar-link">7、 Dockerfile自动构建docker镜像</a></li><li><a href="/cloud/docker/image.html" class="sidebar-link">8、Docker中的镜像分层</a></li><li><a href="/cloud/docker/zabbix.html" class="sidebar-link">9、使用docker运行zabbix-server</a></li><li><a href="/cloud/docker/docker_compose.html" class="sidebar-link">10、 docker-compose编排工具</a></li><li><a href="/cloud/docker/exit.html" class="sidebar-link">11、重启docker服务，容器全部退出的解决办法</a></li><li><a href="/cloud/docker/network.html" class="sidebar-link">12、Docker网络类型</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>二、Docker面试整理</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_6、docker-数据卷的管理"><a href="#_6、docker-数据卷的管理" class="header-anchor">#</a> 6、Docker 数据卷的管理</h1> <h2 id="_6-1-挂载时创建卷"><a href="#_6-1-挂载时创建卷" class="header-anchor">#</a> 6.1 挂载时创建卷</h2> <h3 id="挂载卷"><a href="#挂载卷" class="header-anchor">#</a> 挂载卷</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@docker01 ~<span class="token punctuation">]</span><span class="token comment"># docker run -d -p 80:80 -v /data:/usr/share/nginx/html nginx:latest</span>
+079786c1e297b5c5031e7a841160c74e91d4ad06516505043c60dbb78a259d09
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>容器内站点目录: /usr/share/nginx/html</p> <p>在宿主机写入数据，查看</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@docker01 ~<span class="token punctuation">]</span><span class="token comment"># echo &quot;http://www.nmtui.com&quot; &gt;/data/index.html</span>
+<span class="token punctuation">[</span>root@docker01 ~<span class="token punctuation">]</span><span class="token comment"># curl 10.0.0.100</span>
+http://www.nmtui.com
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="设置共享卷-使用同一个卷启动一个新的容器"><a href="#设置共享卷-使用同一个卷启动一个新的容器" class="header-anchor">#</a> 设置共享卷，使用同一个卷启动一个新的容器</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@docker01 ~<span class="token punctuation">]</span><span class="token comment"># docker run -d -p 8080:80 -v /data:/usr/share/nginx/html nginx:latest </span>
+351f0bd78d273604bd0971b186979aa0f3cbf45247274493d2490527babb4e42
+<span class="token punctuation">[</span>root@docker01 ~<span class="token punctuation">]</span><span class="token comment"># curl 10.0.0.100:8080</span>
+http://www.nmtui.com
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="查看卷列表"><a href="#查看卷列表" class="header-anchor">#</a> 查看卷列表</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@docker01 ~<span class="token punctuation">]</span><span class="token comment"># docker volume ls</span>
+DRIVER              VOLUME NAME
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h2 id="_6-2-创建卷后挂载"><a href="#_6-2-创建卷后挂载" class="header-anchor">#</a> 6.2 创建卷后挂载</h2> <h3 id="创建一个卷"><a href="#创建一个卷" class="header-anchor">#</a> 创建一个卷</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@docker01 ~<span class="token punctuation">]</span><span class="token comment"># docker volume create </span>
+f3b95f7bd17da220e63d4e70850b8d7fb3e20f8ad02043423a39fdd072b83521
+<span class="token punctuation">[</span>root@docker01 ~<span class="token punctuation">]</span><span class="token comment"># docker volume ls </span>
+DRIVER              VOLUME NAME
+<span class="token builtin class-name">local</span>               f3b95f7bd17da220e63d4e70850b8d7fb3e20f8ad02043423a39fdd072b83521
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="指定卷名"><a href="#指定卷名" class="header-anchor">#</a> 指定卷名</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@docker01 ~<span class="token punctuation">]</span><span class="token comment"># docker volume ls </span>
+DRIVER              VOLUME NAME
+<span class="token builtin class-name">local</span>               clsn
+<span class="token builtin class-name">local</span>               f3b95f7bd17da220e63d4e70850b8d7fb3e20f8ad02043423a39fdd072b83521
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="查看卷路径"><a href="#查看卷路径" class="header-anchor">#</a> 查看卷路径</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@docker01 ~<span class="token punctuation">]</span><span class="token comment"># docker volume inspect clsn </span>
+<span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+        <span class="token string">&quot;CreatedAt&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;2018-02-01T00:39:25+08:00&quot;</span>,
+        <span class="token string">&quot;Driver&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;local&quot;</span>,
+        <span class="token string">&quot;Labels&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>,
+        <span class="token string">&quot;Mountpoint&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;/var/lib/docker/volumes/clsn/_data&quot;</span>,
+        <span class="token string">&quot;Name&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;clsn&quot;</span>,
+        <span class="token string">&quot;Options&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>,
+        <span class="token string">&quot;Scope&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;local&quot;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><h3 id="使用卷创建"><a href="#使用卷创建" class="header-anchor">#</a> 使用卷创建</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@docker01 ~<span class="token punctuation">]</span><span class="token comment"># docker run -d -p 9000:80 -v clsn:/usr/share/nginx/html nginx:latest </span>
+1434559cff996162da7ce71820ed8f5937fb7c02113bbc84e965845c219d3503
+<span class="token comment"># 宿主机测试</span>
+<span class="token punctuation">[</span>root@docker01 ~<span class="token punctuation">]</span><span class="token comment"># echo 'blog.nmtui.com' &gt;/var/lib/docker/volumes/clsn/_data/index.html </span>
+<span class="token punctuation">[</span>root@docker01 ~<span class="token punctuation">]</span><span class="token comment"># curl 10.0.0.100:9000</span>
+blog.nmtui.com
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h3 id="设置卷"><a href="#设置卷" class="header-anchor">#</a> 设置卷</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@docker01 ~<span class="token punctuation">]</span><span class="token comment"># docker run  -d  -P  --volumes-from 079786c1e297 nginx:latest </span>
+b54b9c9930b417ab3257c6e4a8280b54fae57043c0b76b9dc60b4788e92369fb
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="查看使用的端口"><a href="#查看使用的端口" class="header-anchor">#</a> 查看使用的端口</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@docker01 ~<span class="token punctuation">]</span><span class="token comment"># netstat -lntup </span>
+Active Internet connections <span class="token punctuation">(</span>only servers<span class="token punctuation">)</span>
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        <span class="token number">0</span>      <span class="token number">0</span> <span class="token number">0.0</span>.0.0:22              <span class="token number">0.0</span>.0.0:*               LISTEN      <span class="token number">1400</span>/sshd           
+tcp        <span class="token number">0</span>      <span class="token number">0</span> <span class="token number">10.0</span>.0.100:2375         <span class="token number">0.0</span>.0.0:*               LISTEN      <span class="token number">26218</span>/dockerd       
+tcp6       <span class="token number">0</span>      <span class="token number">0</span> :::9000                 :::*                    LISTEN      <span class="token number">32015</span>/docker-proxy  
+tcp6       <span class="token number">0</span>      <span class="token number">0</span> :::8080                 :::*                    LISTEN      <span class="token number">31853</span>/docker-proxy  
+tcp6       <span class="token number">0</span>      <span class="token number">0</span> :::80                   :::*                    LISTEN      <span class="token number">31752</span>/docker-proxy  
+tcp6       <span class="token number">0</span>      <span class="token number">0</span> :::22                   :::*                    LISTEN      <span class="token number">1400</span>/sshd           
+tcp6       <span class="token number">0</span>      <span class="token number">0</span> :::32769                :::*                    LISTEN      <span class="token number">32300</span>/docker-proxy  
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h2 id="_6-3-手动将容器保存为镜像"><a href="#_6-3-手动将容器保存为镜像" class="header-anchor">#</a> 6.3 手动将容器保存为镜像</h2> <p>本次是基于docker官方centos 6.8 镜像创建</p> <p>官方镜像列表：https://hub.docker.com/explore/</p> <p>启动一个centos6.8的镜像</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@docker01 ~<span class="token punctuation">]</span><span class="token comment"># docker pull  centos:6.8</span>
+<span class="token punctuation">[</span>root@docker01 ~<span class="token punctuation">]</span><span class="token comment"># docker run -it -p 1022:22 centos:6.8  /bin/bash</span>
+<span class="token comment"># 在容器种安装sshd服务，并修改系统密码</span>
+<span class="token punctuation">[</span>root@582051b2b92b ~<span class="token punctuation">]</span><span class="token comment"># yum install  openssh-server -y </span>
+<span class="token punctuation">[</span>root@582051b2b92b ~<span class="token punctuation">]</span><span class="token comment"># echo &quot;root:123456&quot; |chpasswd</span>
+<span class="token punctuation">[</span>root@582051b2b92b ~<span class="token punctuation">]</span><span class="token comment">#  /etc/init.d/sshd start</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>启动完成后镜像ssh连接测试</p> <h3 id="将容器提交为镜像"><a href="#将容器提交为镜像" class="header-anchor">#</a> 将容器提交为镜像</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@docker01 ~<span class="token punctuation">]</span><span class="token comment"># docker commit brave_mcclintock  centos6-ssh</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="使用新的镜像启动容器"><a href="#使用新的镜像启动容器" class="header-anchor">#</a> 使用新的镜像启动容器</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@docker01 ~<span class="token punctuation">]</span><span class="token comment"># docker run -d  -p 1122:22  centos6-ssh:latest  /usr/sbin/sshd -D </span>
+5b8161fda2a9f2c39c196c67e2eb9274977e7723fe51c4f08a0190217ae93094
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="在容器安装httpd服务"><a href="#在容器安装httpd服务" class="header-anchor">#</a> 在容器安装httpd服务</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@5b8161fda2a9 /<span class="token punctuation">]</span><span class="token comment">#  yum install httpd -y</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h4 id="编写启动脚本脚本"><a href="#编写启动脚本脚本" class="header-anchor">#</a> 编写启动脚本脚本</h4> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@5b8161fda2a9 /<span class="token punctuation">]</span><span class="token comment"># cat  init.sh </span>
+<span class="token comment">#!/bin/bash </span>
+/etc/init.d/httpd start 
+/usr/sbin/sshd <span class="token parameter variable">-D</span>
+<span class="token punctuation">[</span>root@5b8161fda2a9 /<span class="token punctuation">]</span><span class="token comment"># chmod +x init.sh </span>
+<span class="token comment"># 注意执行权限</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h4 id="注意执行权限"><a href="#注意执行权限" class="header-anchor">#</a> 注意执行权限</h4> <p>再次提交为新的镜像</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@docker01 ~<span class="token punctuation">]</span><span class="token comment"># docker commit  5b8161fda2a9 centos6-httpd </span>
+sha256:705d67a786cac040800b8485cf046fd57b1828b805c515377fc3e9cea3a481c1
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>启动镜像，做好端口映射。并在浏览器中测试访问</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@docker01 ~<span class="token punctuation">]</span><span class="token comment"># docker run -d -p 1222:22 -p 80:80  centos6-httpd /init.sh </span>
+46fa6a06644e31701dc019fb3a8c3b6ef008d4c2c10d46662a97664f838d8c2c
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/cloud/docker/manage.html" class="prev">
+        5、 容器的日常管理
+      </a></span> <span class="next"><a href="/cloud/docker/dockerfile.html">
+        7、 Dockerfile自动构建docker镜像
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.1128b3fd.js" defer></script><script src="/assets/js/2.f44a4f26.js" defer></script><script src="/assets/js/20.84be50a4.js" defer></script>
+  </body>
+</html>

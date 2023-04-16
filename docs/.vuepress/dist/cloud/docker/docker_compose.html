@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>10、 docker-compose编排工具 | TechTalks</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    <link rel="icon" href="/image/ico.png">
+    <meta name="description" content="TechTalks：提高你的编程技能和思维方式的计算机技术博客">
+    <meta name="baidu-site-verification" content="codeva-ykKwcuuoe9">
+    
+    <link rel="preload" href="/assets/css/0.styles.e8e4f3a3.css" as="style"><link rel="preload" href="/assets/js/app.1128b3fd.js" as="script"><link rel="preload" href="/assets/js/2.f44a4f26.js" as="script"><link rel="preload" href="/assets/js/12.eb5ed550.js" as="script"><link rel="prefetch" href="/assets/js/10.d40f0961.js"><link rel="prefetch" href="/assets/js/11.82d51190.js"><link rel="prefetch" href="/assets/js/13.5341e0c0.js"><link rel="prefetch" href="/assets/js/14.f1c21ae1.js"><link rel="prefetch" href="/assets/js/15.e0dbb05f.js"><link rel="prefetch" href="/assets/js/16.9c02a03b.js"><link rel="prefetch" href="/assets/js/17.b4900299.js"><link rel="prefetch" href="/assets/js/18.b5a5c967.js"><link rel="prefetch" href="/assets/js/19.060d3d58.js"><link rel="prefetch" href="/assets/js/20.84be50a4.js"><link rel="prefetch" href="/assets/js/21.78e79cad.js"><link rel="prefetch" href="/assets/js/22.99f0c776.js"><link rel="prefetch" href="/assets/js/23.7f559c7d.js"><link rel="prefetch" href="/assets/js/24.759459e9.js"><link rel="prefetch" href="/assets/js/25.17c42094.js"><link rel="prefetch" href="/assets/js/26.cbd20723.js"><link rel="prefetch" href="/assets/js/27.45bba073.js"><link rel="prefetch" href="/assets/js/28.0faee539.js"><link rel="prefetch" href="/assets/js/29.aa8d0c80.js"><link rel="prefetch" href="/assets/js/3.4eac91db.js"><link rel="prefetch" href="/assets/js/30.227b33e4.js"><link rel="prefetch" href="/assets/js/31.37d05d28.js"><link rel="prefetch" href="/assets/js/32.50c3b7fa.js"><link rel="prefetch" href="/assets/js/33.b3662790.js"><link rel="prefetch" href="/assets/js/34.5839cbd6.js"><link rel="prefetch" href="/assets/js/35.74066ea7.js"><link rel="prefetch" href="/assets/js/36.5daa0a8a.js"><link rel="prefetch" href="/assets/js/37.6eab3cd4.js"><link rel="prefetch" href="/assets/js/38.c248805a.js"><link rel="prefetch" href="/assets/js/39.a4dea061.js"><link rel="prefetch" href="/assets/js/4.7ac2b204.js"><link rel="prefetch" href="/assets/js/40.20175a96.js"><link rel="prefetch" href="/assets/js/41.bac5e367.js"><link rel="prefetch" href="/assets/js/42.9f7d59b3.js"><link rel="prefetch" href="/assets/js/5.f702624b.js"><link rel="prefetch" href="/assets/js/6.c76c0e1e.js"><link rel="prefetch" href="/assets/js/7.44092a21.js"><link rel="prefetch" href="/assets/js/8.f9be6854.js"><link rel="prefetch" href="/assets/js/9.080a6f04.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e8e4f3a3.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="https://i.ibb.co/Dwq0gdg/ico.png" alt="TechTalks" class="logo"> <span class="site-name can-hide">TechTalks</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="云原生" class="dropdown-title"><span class="title">云原生</span> <span class="arrow down"></span></button> <button type="button" aria-label="云原生" class="mobile-dropdown-title"><span class="title">云原生</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cloud/blog/" class="nav-link">
+  优秀博文
+</a></li><li class="dropdown-item"><!----> <a href="/cloud/docker/" class="nav-link router-link-active">
+  docker
+</a></li><li class="dropdown-item"><!----> <a href="/cloud/kubernetes/" class="nav-link">
+  Kubernetes
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="常用工具" class="dropdown-title"><span class="title">常用工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="常用工具" class="mobile-dropdown-title"><span class="title">常用工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/usual_tech/go/" class="nav-link">
+  Go
+</a></li><li class="dropdown-item"><!----> <a href="/usual_tech/git/" class="nav-link">
+  Git
+</a></li></ul></div></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  快意门
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="八股文" class="dropdown-title"><span class="title">八股文</span> <span class="arrow down"></span></button> <button type="button" aria-label="八股文" class="mobile-dropdown-title"><span class="title">八股文</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cs/network/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-item"><!----> <a href="/cs/1/" class="nav-link">
+  软件工程
+</a></li><li class="dropdown-item"><!----> <a href="/cs/2/" class="nav-link">
+  组成原理
+</a></li><li class="dropdown-item"><!----> <a href="/cs/browser/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/cs/database/" class="nav-link">
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/cloud/docker/cs/os/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-item"><!----> <a href="/cloud/docker/cs/redis/" class="nav-link">
+  Redis
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="云原生" class="dropdown-title"><span class="title">云原生</span> <span class="arrow down"></span></button> <button type="button" aria-label="云原生" class="mobile-dropdown-title"><span class="title">云原生</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cloud/blog/" class="nav-link">
+  优秀博文
+</a></li><li class="dropdown-item"><!----> <a href="/cloud/docker/" class="nav-link router-link-active">
+  docker
+</a></li><li class="dropdown-item"><!----> <a href="/cloud/kubernetes/" class="nav-link">
+  Kubernetes
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="常用工具" class="dropdown-title"><span class="title">常用工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="常用工具" class="mobile-dropdown-title"><span class="title">常用工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/usual_tech/go/" class="nav-link">
+  Go
+</a></li><li class="dropdown-item"><!----> <a href="/usual_tech/git/" class="nav-link">
+  Git
+</a></li></ul></div></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  快意门
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="八股文" class="dropdown-title"><span class="title">八股文</span> <span class="arrow down"></span></button> <button type="button" aria-label="八股文" class="mobile-dropdown-title"><span class="title">八股文</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cs/network/" class="nav-link">
+  计算机网络
+</a></li><li class="dropdown-item"><!----> <a href="/cs/1/" class="nav-link">
+  软件工程
+</a></li><li class="dropdown-item"><!----> <a href="/cs/2/" class="nav-link">
+  组成原理
+</a></li><li class="dropdown-item"><!----> <a href="/cs/browser/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/cs/database/" class="nav-link">
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/cloud/docker/cs/os/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-item"><!----> <a href="/cloud/docker/cs/redis/" class="nav-link">
+  Redis
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>一、Docker入门</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/cloud/docker/" aria-current="page" class="sidebar-link">1、 容器简介</a></li><li><a href="/cloud/docker/what_is_docker.html" class="sidebar-link">2、什么是 Docker？</a></li><li><a href="/cloud/docker/install_docker.html" class="sidebar-link">3、 安装Docker</a></li><li><a href="/cloud/docker/operate.html" class="sidebar-link">4 docker镜像相关操作</a></li><li><a href="/cloud/docker/manage.html" class="sidebar-link">5、 容器的日常管理</a></li><li><a href="/cloud/docker/volum.html" class="sidebar-link">6、Docker 数据卷的管理</a></li><li><a href="/cloud/docker/dockerfile.html" class="sidebar-link">7、 Dockerfile自动构建docker镜像</a></li><li><a href="/cloud/docker/image.html" class="sidebar-link">8、Docker中的镜像分层</a></li><li><a href="/cloud/docker/zabbix.html" class="sidebar-link">9、使用docker运行zabbix-server</a></li><li><a href="/cloud/docker/docker_compose.html" aria-current="page" class="active sidebar-link">10、 docker-compose编排工具</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/cloud/docker/docker_compose.html#_10-1-安装docker-compose" class="sidebar-link">10.1 安装docker-compose</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/cloud/docker/docker_compose.html#安装docker-compose" class="sidebar-link">安装docker-compose</a></li></ul></li><li class="sidebar-sub-header"><a href="/cloud/docker/docker_compose.html#_10-2-编排启动镜像" class="sidebar-link">10.2 编排启动镜像</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/cloud/docker/docker_compose.html#创建文件目录" class="sidebar-link">创建文件目录</a></li><li class="sidebar-sub-header"><a href="/cloud/docker/docker_compose.html#编写编排文件" class="sidebar-link">编写编排文件</a></li><li class="sidebar-sub-header"><a href="/cloud/docker/docker_compose.html#启动" class="sidebar-link">启动</a></li></ul></li></ul></li><li><a href="/cloud/docker/exit.html" class="sidebar-link">11、重启docker服务，容器全部退出的解决办法</a></li><li><a href="/cloud/docker/network.html" class="sidebar-link">12、Docker网络类型</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>二、Docker面试整理</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_10、-docker-compose编排工具"><a href="#_10、-docker-compose编排工具" class="header-anchor">#</a> 10、 docker-compose编排工具</h1> <h2 id="_10-1-安装docker-compose"><a href="#_10-1-安装docker-compose" class="header-anchor">#</a> 10.1 安装docker-compose</h2> <h3 id="安装docker-compose"><a href="#安装docker-compose" class="header-anchor">#</a> 安装docker-compose</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 下载pip软件</span>
+yum <span class="token function">install</span> <span class="token parameter variable">-y</span> python2-pip
+<span class="token comment"># 下载 docker-compose</span>
+pip <span class="token function">install</span> <span class="token function">docker-compose</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>国内开启pip 下载加速：http://mirrors.aliyun.com/help/pypi</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">mkdir</span> ~/.pip/
+<span class="token function">cat</span> <span class="token operator">&gt;</span> ~/.pip/pip.conf <span class="token operator">&lt;&lt;</span><span class="token string">'EOF'
+[global]
+index-url = https://mirrors.aliyun.com/pypi/simple/
+[install]
+trusted-host=mirrors.aliyun.com
+EOF</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h2 id="_10-2-编排启动镜像"><a href="#_10-2-编排启动镜像" class="header-anchor">#</a> 10.2 编排启动镜像</h2> <h3 id="创建文件目录"><a href="#创建文件目录" class="header-anchor">#</a> 创建文件目录</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@docker01 ~<span class="token punctuation">]</span><span class="token comment"># mkdir /opt/my_wordpress/</span>
+<span class="token punctuation">[</span>root@docker01 ~<span class="token punctuation">]</span><span class="token comment"># cd /opt/my_wordpress/</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="编写编排文件"><a href="#编写编排文件" class="header-anchor">#</a> 编写编排文件</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@docker01 my_wordpress<span class="token punctuation">]</span><span class="token comment"># vim docker-compose.yml</span>
+version: <span class="token string">'3'</span>
+services:
+   db:
+     image: mysql:5.7
+     volumes:
+       - /data/db_data:/var/lib/mysql
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: somewordpress
+       MYSQL_DATABASE: wordpress
+       MYSQL_USER: wordpress
+       MYSQL_PASSWORD: wordpress
+   wordpress:
+     depends_on:
+       - db
+     image: wordpress:latest
+     volumes:
+       - /data/web_data:/var/www/html
+     ports: 
+       - <span class="token string">&quot;8000:80&quot;</span>
+     restart: always
+     environment:
+       WORDPRESS_DB_HOST: db:3306
+       WORDPRESS_DB_USER: wordpress
+       WORDPRESS_DB_PASSWORD: wordpress
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br></div></div><h3 id="启动"><a href="#启动" class="header-anchor">#</a> 启动</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@docker01 my_wordpress<span class="token punctuation">]</span><span class="token comment"># docker-compose up</span>
+　　<span class="token comment">#启动方法：docker-compose up</span>
+　　<span class="token comment">#后台启动方法：docker-compose up -d</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>浏览器上访问http://ip:8000</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/cloud/docker/zabbix.html" class="prev">
+        9、使用docker运行zabbix-server
+      </a></span> <span class="next"><a href="/cloud/docker/exit.html">
+        11、重启docker服务，容器全部退出的解决办法
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.1128b3fd.js" defer></script><script src="/assets/js/2.f44a4f26.js" defer></script><script src="/assets/js/12.eb5ed550.js" defer></script>
+  </body>
+</html>
