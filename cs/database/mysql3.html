@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>三、存储引擎 | TechTalks</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    <link rel="icon" href="/image/ico.png">
+    <meta name="description" content="TechTalks：提高你的编程技能和思维方式的计算机技术博客">
+    <meta name="baidu-site-verification" content="codeva-ykKwcuuoe9">
+    
+    <link rel="preload" href="/assets/css/0.styles.576f4a24.css" as="style"><link rel="preload" href="/assets/js/app.2c5bbe05.js" as="script"><link rel="preload" href="/assets/js/2.23b0dd23.js" as="script"><link rel="preload" href="/assets/js/35.09a6db7d.js" as="script"><link rel="prefetch" href="/assets/js/10.439434ef.js"><link rel="prefetch" href="/assets/js/11.8028b07e.js"><link rel="prefetch" href="/assets/js/12.2ae4910c.js"><link rel="prefetch" href="/assets/js/13.268a3222.js"><link rel="prefetch" href="/assets/js/14.33ce6897.js"><link rel="prefetch" href="/assets/js/15.bdcc99ef.js"><link rel="prefetch" href="/assets/js/16.46fa482d.js"><link rel="prefetch" href="/assets/js/17.7f3894c5.js"><link rel="prefetch" href="/assets/js/18.6f69bd99.js"><link rel="prefetch" href="/assets/js/19.051a42c6.js"><link rel="prefetch" href="/assets/js/20.ba0d021b.js"><link rel="prefetch" href="/assets/js/21.02eb122b.js"><link rel="prefetch" href="/assets/js/22.e655623c.js"><link rel="prefetch" href="/assets/js/23.70c69917.js"><link rel="prefetch" href="/assets/js/24.c6d3233d.js"><link rel="prefetch" href="/assets/js/25.4a19fb38.js"><link rel="prefetch" href="/assets/js/26.a6b21126.js"><link rel="prefetch" href="/assets/js/27.987667e7.js"><link rel="prefetch" href="/assets/js/28.40d33fdb.js"><link rel="prefetch" href="/assets/js/29.1bcceec8.js"><link rel="prefetch" href="/assets/js/3.db2b7f14.js"><link rel="prefetch" href="/assets/js/30.dc547128.js"><link rel="prefetch" href="/assets/js/31.108a7ea5.js"><link rel="prefetch" href="/assets/js/32.9a658b23.js"><link rel="prefetch" href="/assets/js/33.9125efc8.js"><link rel="prefetch" href="/assets/js/34.4b3c23ed.js"><link rel="prefetch" href="/assets/js/36.5f34af0e.js"><link rel="prefetch" href="/assets/js/37.6c3ded65.js"><link rel="prefetch" href="/assets/js/38.a5f0b672.js"><link rel="prefetch" href="/assets/js/39.84fc629c.js"><link rel="prefetch" href="/assets/js/4.dd3b88fa.js"><link rel="prefetch" href="/assets/js/40.ef7bffd7.js"><link rel="prefetch" href="/assets/js/41.27ae1ef4.js"><link rel="prefetch" href="/assets/js/42.846c55db.js"><link rel="prefetch" href="/assets/js/43.760e42bd.js"><link rel="prefetch" href="/assets/js/44.4f8501ae.js"><link rel="prefetch" href="/assets/js/45.e6c70d39.js"><link rel="prefetch" href="/assets/js/46.943a994c.js"><link rel="prefetch" href="/assets/js/47.e4887269.js"><link rel="prefetch" href="/assets/js/48.49c4ab75.js"><link rel="prefetch" href="/assets/js/49.bec045d1.js"><link rel="prefetch" href="/assets/js/5.18918da4.js"><link rel="prefetch" href="/assets/js/50.d5e38795.js"><link rel="prefetch" href="/assets/js/51.1e31e24c.js"><link rel="prefetch" href="/assets/js/52.23e0ac90.js"><link rel="prefetch" href="/assets/js/53.c9dfcda9.js"><link rel="prefetch" href="/assets/js/54.6711da2f.js"><link rel="prefetch" href="/assets/js/55.aa024487.js"><link rel="prefetch" href="/assets/js/56.ece32596.js"><link rel="prefetch" href="/assets/js/57.beb1fda8.js"><link rel="prefetch" href="/assets/js/58.311df9ca.js"><link rel="prefetch" href="/assets/js/59.f5d8bc4a.js"><link rel="prefetch" href="/assets/js/6.0b646984.js"><link rel="prefetch" href="/assets/js/60.98747fa7.js"><link rel="prefetch" href="/assets/js/61.6aa7f7f8.js"><link rel="prefetch" href="/assets/js/62.eecad293.js"><link rel="prefetch" href="/assets/js/63.a907f313.js"><link rel="prefetch" href="/assets/js/64.fcf5ae5e.js"><link rel="prefetch" href="/assets/js/65.28ac684c.js"><link rel="prefetch" href="/assets/js/66.fbfe4e49.js"><link rel="prefetch" href="/assets/js/7.700c3779.js"><link rel="prefetch" href="/assets/js/8.2666470b.js"><link rel="prefetch" href="/assets/js/9.6cf4f2ae.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.576f4a24.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="https://i.ibb.co/Dwq0gdg/ico.png" alt="TechTalks" class="logo"> <span class="site-name can-hide">TechTalks</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="云原生" class="dropdown-title"><span class="title">云原生</span> <span class="arrow down"></span></button> <button type="button" aria-label="云原生" class="mobile-dropdown-title"><span class="title">云原生</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cloud/blog/" class="nav-link">
+  优秀博文
+</a></li><li class="dropdown-item"><!----> <a href="/cloud/docker/" class="nav-link">
+  docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="常用工具" class="dropdown-title"><span class="title">常用工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="常用工具" class="mobile-dropdown-title"><span class="title">常用工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/usual_tech/go/" class="nav-link">
+  Go
+</a></li><li class="dropdown-item"><!----> <a href="/usual_tech/git/" class="nav-link">
+  Git
+</a></li></ul></div></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  快意门
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="八股文" class="dropdown-title"><span class="title">八股文</span> <span class="arrow down"></span></button> <button type="button" aria-label="八股文" class="mobile-dropdown-title"><span class="title">八股文</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cs/network/" class="nav-link">
+  ☁️ 计算机网络
+</a></li><li class="dropdown-item"><!----> <a href="/cs/database/" class="nav-link router-link-active">
+  💾 数据库
+</a></li><li class="dropdown-item"><!----> <a href="/cs/os/" class="nav-link">
+  💻 操作系统
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="云原生" class="dropdown-title"><span class="title">云原生</span> <span class="arrow down"></span></button> <button type="button" aria-label="云原生" class="mobile-dropdown-title"><span class="title">云原生</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cloud/blog/" class="nav-link">
+  优秀博文
+</a></li><li class="dropdown-item"><!----> <a href="/cloud/docker/" class="nav-link">
+  docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="常用工具" class="dropdown-title"><span class="title">常用工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="常用工具" class="mobile-dropdown-title"><span class="title">常用工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/usual_tech/go/" class="nav-link">
+  Go
+</a></li><li class="dropdown-item"><!----> <a href="/usual_tech/git/" class="nav-link">
+  Git
+</a></li></ul></div></div><div class="nav-item"><a href="/tools/" class="nav-link">
+  快意门
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="八股文" class="dropdown-title"><span class="title">八股文</span> <span class="arrow down"></span></button> <button type="button" aria-label="八股文" class="mobile-dropdown-title"><span class="title">八股文</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cs/network/" class="nav-link">
+  ☁️ 计算机网络
+</a></li><li class="dropdown-item"><!----> <a href="/cs/database/" class="nav-link router-link-active">
+  💾 数据库
+</a></li><li class="dropdown-item"><!----> <a href="/cs/os/" class="nav-link">
+  💻 操作系统
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>数据库系统原理</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>MySQL</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/cs/database/mysql1.html" class="sidebar-link">一、索引</a></li><li><a href="/cs/database/mysql2.html" class="sidebar-link">二、查询性能优化</a></li><li><a href="/cs/database/mysql3.html" aria-current="page" class="active sidebar-link">三、存储引擎</a></li><li><a href="/cs/database/mysql4.html" class="sidebar-link">四、数据类型</a></li><li><a href="/cs/database/mysql5.html" class="sidebar-link">五、切分</a></li><li><a href="/cs/database/mysql6.html" class="sidebar-link">六、复制</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Redis</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="三、存储引擎"><a href="#三、存储引擎" class="header-anchor">#</a> 三、存储引擎</h1> <p></p><div class="table-of-contents"><ul><li><a href="#innodb">InnoDB</a></li><li><a href="#myisam">MyISAM</a></li><li><a href="#比较">比较</a></li></ul></div><p></p> <h3 id="innodb"><a href="#innodb" class="header-anchor">#</a> InnoDB</h3> <p>是 MySQL 默认的事务型存储引擎，只有在需要它不支持的特性时，才考虑使用其它存储引擎。</p> <p>实现了四个标准的隔离级别，默认级别是可重复读（REPEATABLE READ）。在可重复读隔离级别下，通过多版本并发控制（MVCC）+ Next-Key Locking 防止幻影读。</p> <p>主索引是聚簇索引，在索引中保存了数据，从而避免直接读取磁盘，因此对查询性能有很大的提升。</p> <p>内部做了很多优化，包括从磁盘读取数据时采用的可预测性读、能够加快读操作并且自动创建的自适应哈希索引、能够加速插入操作的插入缓冲区等。</p> <p>支持真正的在线热备份。其它存储引擎不支持在线热备份，要获取一致性视图需要停止对所有表的写入，而在读写混合场景中，停止写入可能也意味着停止读取。</p> <h3 id="myisam"><a href="#myisam" class="header-anchor">#</a> MyISAM</h3> <p>设计简单，数据以紧密格式存储。对于只读数据，或者表比较小、可以容忍修复操作，则依然可以使用它。</p> <p>提供了大量的特性，包括压缩表、空间数据索引等。</p> <p>不支持事务。</p> <p>不支持行级锁，只能对整张表加锁，读取时会对需要读到的所有表加共享锁，写入时则对表加排它锁。但在表有读取操作的同时，也可以往表中插入新的记录，这被称为并发插入（CONCURRENT INSERT）。</p> <p>可以手工或者自动执行检查和修复操作，但是和事务恢复以及崩溃恢复不同，可能导致一些数据丢失，而且修复操作是非常慢的。</p> <p>如果指定了 DELAY_KEY_WRITE 选项，在每次修改执行完成时，不会立即将修改的索引数据写入磁盘，而是会写到内存中的键缓冲区，只有在清理键缓冲区或者关闭表的时候才会将对应的索引块写入磁盘。这种方式可以极大的提升写入性能，但是在数据库或者主机崩溃时会造成索引损坏，需要执行修复操作。</p> <h3 id="比较"><a href="#比较" class="header-anchor">#</a> 比较</h3> <ul><li><p>事务：InnoDB 是事务型的，可以使用 Commit 和 Rollback 语句。</p></li> <li><p>并发：MyISAM 只支持表级锁，而 InnoDB 还支持行级锁。</p></li> <li><p>外键：InnoDB 支持外键。</p></li> <li><p>备份：InnoDB 支持在线热备份。</p></li> <li><p>崩溃恢复：MyISAM 崩溃后发生损坏的概率比 InnoDB 高很多，而且恢复的速度也更慢。</p></li> <li><p>其它特性：MyISAM 支持压缩表和空间数据索引。</p></li></ul></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/cs/database/mysql2.html" class="prev">
+        二、查询性能优化
+      </a></span> <span class="next"><a href="/cs/database/mysql4.html">
+        四、数据类型
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.2c5bbe05.js" defer></script><script src="/assets/js/2.23b0dd23.js" defer></script><script src="/assets/js/35.09a6db7d.js" defer></script>
+  </body>
+</html>
